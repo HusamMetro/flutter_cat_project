@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import '../details/cat_details_screen.dart';
 
-
 class CatCard extends StatelessWidget {
   final CatModel catModel;
 
@@ -18,7 +17,9 @@ class CatCard extends StatelessWidget {
       clipBehavior: Clip.hardEdge,
       child: InkWell(
         splashColor: Colors.greenAccent,
-        onTap: () {onCardTaped(context);},
+        onTap: () {
+          onCardTaped(context, catModel);
+        },
         child: Column(
           children: [
             Expanded(
@@ -47,8 +48,8 @@ class CatCard extends StatelessWidget {
   }
 }
 
-void onCardTaped(BuildContext context) {
+void onCardTaped(BuildContext context, CatModel catModel) {
   Navigator.of(context).push(MaterialPageRoute(
-    builder: (context) => const CatDetailsScreen(),
+    builder: (context) => CatDetailsScreen(catModel: catModel),
   ));
 }
